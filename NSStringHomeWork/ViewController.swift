@@ -21,18 +21,29 @@ class ViewController: UIViewController {
     
     func setTextLabels() {
         
+        let myShadowToString1 = NSShadow()
+        myShadowToString1.shadowBlurRadius = 5
+        myShadowToString1.shadowOffset = CGSize(width: 3, height: 3)
+        myShadowToString1.shadowColor = UIColor.black
+        
         let myAttribute = [ NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 25.0)! ]
-        let myString = NSMutableAttributedString(string: " First ", attributes: myAttribute )
-        myString.append(NSAttributedString(string: " string  "))
-        let myString1Range1 = NSRange(location: 0, length: 7)
-        myString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: myString1Range1)
-        let myString2Range2 = NSRange(location: 8, length: 7)
-        myString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: myString2Range2)
-        myString.addAttribute(NSAttributedString.Key.font, value: UIFont(name:"Courier", size: 32)!, range: myString2Range2)
+        let AttrStringToLabel1 = NSMutableAttributedString(string: " First ", attributes: myAttribute )
+        AttrStringToLabel1.append(NSAttributedString(string: " string  "))
+        
+        let label1Range1 = NSRange(location: 0, length: 7)
+        let label1Range2 = NSRange(location: 8, length: 7)
+        let label1FullRange = NSRange(location: 0, length: 15)
+        
+        AttrStringToLabel1.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.blue, range: label1Range1)
+        AttrStringToLabel1.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: label1Range2)
+        AttrStringToLabel1.addAttribute(NSAttributedString.Key.font, value: UIFont(name:"Courier", size: 32)!, range: label1Range2)
+        AttrStringToLabel1.addAttribute(NSAttributedString.Key.shadow, value: myShadowToString1, range: label1FullRange)
+        
+        
         
         label1.textAlignment = .right
         label1.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label1.attributedText = myString
+        label1.attributedText = AttrStringToLabel1
         let myAttributeSecondString = [ NSAttributedString.Key.font: UIFont(name: "Damascus", size: 25.0)! ]
         
         let mySecondString = NSMutableAttributedString(string:"String is a Link", attributes: myAttributeSecondString )
