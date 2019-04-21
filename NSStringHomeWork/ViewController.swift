@@ -46,10 +46,12 @@ class ViewController: UIViewController {
         label1.attributedText = AttrStringToLabel1
         let myAttributeSecondString = [ NSAttributedString.Key.font: UIFont(name: "Damascus", size: 25.0)! ]
         
-        let mySecondString = NSMutableAttributedString(string:"String is a Link", attributes: myAttributeSecondString )
+        
+        
+        let label2String = NSMutableAttributedString(string:"String is a Link", attributes: myAttributeSecondString )
         myRangeSecondString = NSRange(location: 12, length: 4)
-        mySecondString.addAttribute(NSAttributedString.Key.link, value: "run", range: myRangeSecondString!)
-        label2.attributedText = mySecondString
+        label2String.addAttribute(NSAttributedString.Key.link, value: "run", range: myRangeSecondString!)
+        label2.attributedText = label2String
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tapLabel(gesture:)))
         label2.addGestureRecognizer(gesture)
     }
